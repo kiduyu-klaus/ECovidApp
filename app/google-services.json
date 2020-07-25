@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "5844563364",
+    "firebase_url": "https://e-covid-app.firebaseio.com",
+    "project_id": "e-covid-app",
+    "storage_bucket": "e-covid-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5844563364:android:9ad9bb2b91dfe48b9f3d31",
+        "android_client_info": {
+          "package_name": "com.kiduyu.mercyproject.e_covidapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5844563364-kphv83l2grgger56vncn7umoh0urg6bp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kiduyu.mercyproject.e_covidapp",
+            "certificate_hash": "3ba39af2962b98b1aa6b294bdf81bd32eea77ba7"
+          }
+        },
+        {
+          "client_id": "5844563364-udeefom1u8cu4p8eneg4fbg6lpcvrlu3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdnrxfPRwrhNQv0y0u6zL4K9CX4_VgStk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5844563364-udeefom1u8cu4p8eneg4fbg6lpcvrlu3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
