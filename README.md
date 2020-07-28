@@ -11,3 +11,16 @@
 <p align="center">
 ✨ An kenyan app-solution where all different scenarios and use-cases for health care professionals working in a COVID-19 environment can be covered and the public made aware of important information and government guidelines.
 </p>
+
+ *UNDER DEVELOPMENT*
+ ### To-Do List
+
+- [ ] offer real-time statistics and information related to covid-19.
+- [ ] remind the users on the preventive guidelines set by the government.
+- [ ] Show covid 19 centers/isolation depending on your location.
+- [ ] analyze users risk levels.
+- [ ] classify the counties depending on the hot zones.
+
+# ScreenShots
+<img src="./screenshots/splash.jpg"> <img src="./screenshots/login.jpg"> <img src="./screenshots/home.jpg">.
+<img src="./screenshots/consumable_fragment.jpg">
