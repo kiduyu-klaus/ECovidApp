@@ -15,12 +15,13 @@
  *UNDER DEVELOPMENT*
  ### To-Do List
 
-- [ ] offer real-time statistics and information related to covid-19.
+- [x] offer real-time statistics and information related to covid-19.
+- [x] offer real-time news Related to Covid-19.
 - [ ] remind the users on the preventive guidelines set by the government.
 - [ ] Show covid 19 centers/isolation depending on your location.
 - [ ] analyze users risk levels.
 - [ ] classify the counties depending on the hot zones.
 
 # ScreenShots
-<img src="./screenshots/splash.jpg"> <img src="./screenshots/login.jpg"> <img src="./screenshots/home.jpg">.
+<img src="./screenshots/home.jpg"> <img src="./screenshots/news.jpg"> <img src="./screenshots/home.jpg">.
 <img src="./screenshots/consumable_fragment.jpg">
