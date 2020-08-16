@@ -17,11 +17,23 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.kiduyu.mercyproject.e_covidapp.Utils.ExtractData;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -42,22 +54,30 @@ public class Homefragment extends Fragment {
     public static boolean isRefreshed;
     private long backPressTime;
     private Toast backToast;
+    private RequestQueue requestQueue;
 
     TextView textView_confirmed, textView_confirmed_new, textView_recovered, textView_recovered_new, textView_death, textView_death_new, textView_tests, textView_date, textView_tests_new, textview_time;
+    TextView textView_active;
+    TextView textView_tiime;
     ProgressDialog progressDialog;
-    Content content = new Content();
+    ExtractData extractData;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_fragment, container, false);
         textView_confirmed = view.findViewById(R.id.confirmed_textView);
         textView_confirmed_new = view.findViewById(R.id.confirmed_new_textView);
+
+//        extractData = new ExtractData(getActivity()) ;
+        requestQueue = Volley.newRequestQueue(getActivity());
         textView_recovered = view.findViewById(R.id.recovered_textView);
+        textView_tiime = view.findViewById(R.id.time_textView);
         textView_recovered_new = view.findViewById(R.id.recovered_new_textView);
         textView_death = view.findViewById(R.id.death_textView);
         textView_death_new = view.findViewById(R.id.death_new_textView);
         textView_tests = view.findViewById(R.id.tests_textView);
         textView_date = view.findViewById(R.id.date_textView);
+        textView_active = view.findViewById(R.id.active_textView);
         textView_tests_new = view.findViewById(R.id.tests_new_textView);
 
         Content content = new Content();
@@ -171,6 +191,52 @@ public class Homefragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            String dataURL = "https://corona.lmao.ninja/v2/countries";
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, dataURL, null, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+
+                    try {
+                        for (int i = 0; i < response.length(); i++) {
+                            JSONObject jsonObject = response.getJSONObject(i);
+
+                            String countryName = jsonObject.getString("country");
+                            String countryConfirmed = jsonObject.getString("cases");
+                            String countryActive = jsonObject.getString("active");
+                            String countryRecovered = jsonObject.getString("recovered");
+                            String countryDeceased = jsonObject.getString("deaths");
+                            String countryNewConfirmed = jsonObject.getString("todayCases");
+                            String countryNewDeceased = jsonObject.getString("todayDeaths");
+                            String countryTests = jsonObject.getString("tests");
+                            String countryNewRecovered = jsonObject.getString("todayRecovered");
+                            JSONObject object = jsonObject.getJSONObject("countryInfo");
+                            String flagUrl = object.getString("flag");
+
+                            if (countryName.equals("Kenya")){
+                                Log.d("TAG", "onResponse: "+countryActive);
+                                int countryActiven = Integer.parseInt(countryActive);
+                                int countrysampless = Integer.parseInt(countryTests);
+                                textView_active.setText(NumberFormat.getInstance().format(countryActiven));
+                                textView_tests.setText(NumberFormat.getInstance().format(countrysampless));
+                                textView_tiime.setText("08:24 Am");
+
+                            }
+
+
+
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+            requestQueue.add(jsonArrayRequest);
             return null;
 
         }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,7 +34,7 @@ public class Newsfragment extends Fragment {
     String news_date;
     String date;
     String about;
-    ImageView prevDay;
+    Button prevDay;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,10 +42,10 @@ public class Newsfragment extends Fragment {
 
 
         RecyclerView recycler = view.findViewById(R.id.recyclerview_news_fragment);
+        prevDay = view.findViewById(R.id.btn_p_day);
         news_adapter= new NewsAdapter(getActivity(),newslist);
         recycler.setAdapter(news_adapter);
         newsTime=view.findViewById(R.id.news_time);
-        prevDay=view.findViewById(R.id.previous_day);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
 
@@ -72,7 +73,7 @@ public class Newsfragment extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            prevDay.setOnClickListener(new View.OnClickListener() {
+           prevDay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     FragmentManager fm =getActivity().getSupportFragmentManager();

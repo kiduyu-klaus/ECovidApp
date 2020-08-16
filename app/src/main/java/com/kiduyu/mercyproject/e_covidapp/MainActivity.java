@@ -3,6 +3,7 @@ package com.kiduyu.mercyproject.e_covidapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -16,6 +17,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +27,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -53,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     String deaths;
     String newConfirmed;
     String newDeaths;
+    private RequestQueue requestQueue;
     String newRecovered;
     private long backPressTime;
     private Toast backToast;
@@ -62,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.app_name)+" kenya");
 
         bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -98,11 +105,15 @@ public class MainActivity extends AppCompatActivity {
 
                     //MenuItem.se
                     return true;
-                case R.id.navigationreports:
+                case R.id.navigationworld:
+                    getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, new WorldStatFragment()).commit();
+
                     return true;
-                case R.id.navigationdelivery:
+                case R.id.navigationlevels:
                     return true;
-                case R.id.navigationMenu:
+                case R.id.navigationcounty:
+                    getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, new CountyFragments()).commit();
+
                     return true;
             }
 
@@ -111,6 +122,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
     };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.info) {
+            Intent intent = new Intent(this, InfoActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private class Content extends AsyncTask<Void, Void, Void> {
 
@@ -238,6 +265,9 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+
+
             return null;
 
         }

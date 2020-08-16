@@ -8,8 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="8dp"
-        android:weightSum="4">
+        android:weightSum="3"
+        android:paddingTop="8dp">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -73,12 +74,11 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/death_card"
+                    android:id="@+id/active_card"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
-                    android:layout_marginEnd="8dp"
                     app:cardBackgroundColor="@color/cardBackground"
                     app:cardCornerRadius="8dp">
 
@@ -89,16 +89,16 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/death_title_textView"
+                            android:id="@+id/active_title_textView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Deceased"
-                            android:textColor="@color/red"
+                            android:text="Active"
+                            android:textColor="@color/blue"
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/death_textView"
+                            android:id="@+id/active_textView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
@@ -107,12 +107,12 @@
                             android:textSize="30sp" />
 
                         <TextView
-                            android:id="@+id/death_new_textView"
+                            android:id="@+id/active_new_textView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:gravity="center"
-                            android:textColor="@color/red"
+                            android:textColor="@color/blue"
                             android:textSize="15sp" />
 
                     </LinearLayout>
@@ -168,13 +168,12 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/date_card"
+                    android:id="@+id/death_card"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
                     app:cardBackgroundColor="@color/cardBackground"
                     app:cardCornerRadius="8dp">
 
@@ -185,26 +184,38 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/death_title_textView"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Last update"
-                            android:textColor="@color/orange"
+                            android:gravity="center"
+                            android:text="Deceased"
+                            android:textColor="@color/red"
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/date_textView"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/death_textView"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:gravity="center"
                             android:textColor="#fff"
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:id="@+id/death_new_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/red"
                             android:textSize="15sp" />
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
-
-
             </GridLayout>
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -232,7 +243,6 @@
                         android:id="@+id/samples_card"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginEnd="8dp"
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
                         app:cardBackgroundColor="@color/cardBackground"
@@ -271,11 +281,53 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/date_card"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_marginStart="8dp"
+                        app:cardBackgroundColor="@color/cardBackground"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Last update"
+                                android:textColor="@color/orange"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:id="@+id/time_textView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:textColor="#fff"
+                                android:textSize="29sp" />
+
+                            <TextView
+                                android:id="@+id/date_textView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:textColor="#fff"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
                 </GridLayout>
             </RelativeLayout>
-
         </LinearLayout>
+
     </LinearLayout>
 
 

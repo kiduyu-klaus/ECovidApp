@@ -1,32 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="3">
 
     <LinearLayout
-        android:layout_width="match_parent"
         android:id="@+id/news_frag"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="0.25"
         android:orientation="horizontal">
-        <ImageView
-            android:layout_width="70dp"
-            android:id="@+id/previous_day"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_back"/>
+
         <TextView
-            android:layout_width="match_parent"
             android:id="@+id/news_time"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:text="@string/app_name"
             android:textAlignment="center"
             android:textAppearance="@android:style/TextAppearance.Medium"
-            android:layout_height="30dp"/>
+            android:textColor="@color/white" />
 
 
     </LinearLayout>
-<androidx.recyclerview.widget.RecyclerView
-    android:layout_width="match_parent"
-    android:layout_below="@+id/news_frag"
-    android:layout_margin="4dp"
-    android:layout_height="match_parent"
-    android:id="@+id/recyclerview_news_fragment"/>
 
-</RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_news_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/news_frag"
+        android:layout_weight="2.5" />
+
+    <Button
+        android:id="@+id/btn_p_day"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fontFamily="@font/metropolis_medium"
+        android:background="@drawable/bg_previous"
+        android:layout_weight="0.25"
+        android:text="@string/previous"
+        android:textColor="@color/white" />
+
+</LinearLayout>
