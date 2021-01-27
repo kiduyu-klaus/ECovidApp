@@ -55,7 +55,7 @@ public class StatewiseAdapter extends RecyclerView.Adapter<StatewiseAdapter.View
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Stats for "+currentItem.getState()+" coming soon", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Details for "+currentItem.getState()+" coming soon", Toast.LENGTH_SHORT).show();
             }
         });
 

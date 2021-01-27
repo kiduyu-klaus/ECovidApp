@@ -110,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
 
                     return true;
                 case R.id.navigationlevels:
+                    getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, new MyLevelsFragents()).commit();
+
                     return true;
                 case R.id.navigationcounty:
                     getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, new CountyFragments()).commit();
@@ -149,11 +151,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            final PieChart mPieChart = findViewById(R.id.piechart);
+       final PieChart mPieChart = findViewById(R.id.piechart);
             mPieChart.clearChart();
             String trim = confirmed.replaceAll(",", "");
             String trim2 = recovered.replaceAll(",", "");
-            int total = Integer.parseInt(trim) + Integer.parseInt(trim2) + Integer.parseInt(deaths);
+            String trim3 = deaths.replaceAll(",", "");
+            int total = Integer.parseInt(trim) + Integer.parseInt(trim2) + Integer.parseInt(trim3);
             // int percentage=total*100;
             Log.d("TAG", "total: " + total);
             int confirm = Integer.parseInt(trim);
@@ -164,14 +167,14 @@ public class MainActivity extends AppCompatActivity {
             double recover_cases = (double) recoveries / total;
             double recover_cases_ok = (double) recover_cases * 100;
 
-            int deat = Integer.parseInt(deaths);
+            int deat = Integer.parseInt(trim3);
             double death_cases = (double) deat / total;
             double death_casess_ok = (double) death_cases * 100;
 
             Log.d("TAG", "total: " + (int) confirmed_cases_ok);
             //int confirm=Integer.parseInt(trim2);
             // double recovery_percent= confirm/total*100;
-            double deaths_percent = Integer.parseInt(deaths) / total * 100;
+            double deaths_percent = Integer.parseInt(trim3) / total * 100;
 
             Log.d("TAG", "onPostExecute: " + " " + " " + deaths_percent);
             mPieChart.addPieSlice(new PieModel("Active", (int) confirmed_cases_ok, Color.parseColor("#007afe")));
@@ -179,6 +182,8 @@ public class MainActivity extends AppCompatActivity {
             mPieChart.addPieSlice(new PieModel("Deceased", (int) death_casess_ok, Color.parseColor("#F6404F")));
 
             mPieChart.startAnimation();
+
+
 
 
         }

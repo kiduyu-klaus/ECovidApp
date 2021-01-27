@@ -3,4 +3,5 @@
     <string name="version">An App to show the updated statistics \n of the covid-19 pandemic in kenya</string>
     <string name="owner_text">Under the Management of the Nyeri County Government</string>
     <string name="previous">Previous Day</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

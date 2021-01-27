@@ -25,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 
 public class CountyFragments extends Fragment implements StatewiseAdapter.OnItemClickListner  {
     private RecyclerView recyclerView;
@@ -101,7 +102,12 @@ public class CountyFragments extends Fragment implements StatewiseAdapter.OnItem
         for (int i = 0; i < arr.length; i++) {
             Log.d("TAG", "extractData: "+arr.length);
             String y=arr[i];
-            statewiseModelArrayList.add(new StatewiseModel(y, "", "", "", "", "", "","", ""));
+            Random r = new Random();
+            int low = 100;
+            int high = 200;
+            int result = r.nextInt(high-low) + low;
+            String confirmed = String.valueOf(result);
+            statewiseModelArrayList.add(new StatewiseModel(y, confirmed, "", "", "", "", "","", ""));
 
         }
         progressDialog.cancel();
