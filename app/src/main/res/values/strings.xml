@@ -4,4 +4,6 @@
     <string name="owner_text">Under the Management of the Nyeri County Government</string>
     <string name="previous">Previous Day</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps2">Map</string>
+    <string name="title_activity_maps3">Map</string>
 </resources>
